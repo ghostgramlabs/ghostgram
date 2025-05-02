@@ -43,11 +43,13 @@
       margin-top: 20px;
     }
     .carousel {
-      max-width: 360px;
+      max-width: 600px;
       margin: 40px auto;
     }
     .carousel img {
       width: 100%;
+      max-height: 100vh;
+      object-fit: contain;
       border-radius: 12px;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     }
@@ -61,7 +63,7 @@
     .features ul {
       list-style: none;
       padding: 0;
-      max-width: 600px;
+      max-width: 800px;
       margin: auto;
     }
     .features li {
@@ -84,7 +86,7 @@
     <p>Track who’s not following you back on Instagram — 100% offline and private. No login. No risk.</p>
     <div class="cta-buttons">
       <a href="https://play.google.com/store/apps/details?id=com.ghostgram.app" target="_blank">
-        <img src="https://play-lh.googleusercontent.com/RZmT9RgDqg-bxGty1sRuT68q_MUb9HT3jTPlk0BjjGbPP7hG3RJ7kPtVtMJp2aFqzg=w240-h480-rw" 
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" 
              alt="Get it on Google Play">
       </a>
     </div>
@@ -95,12 +97,22 @@
   </div>
 
   <script>
-    let currentIndex = 1;
-    const totalImages = 16;
-    setInterval(() => {
-      currentIndex = (currentIndex % totalImages) + 1;
-      document.getElementById("carousel-image").src = `images/${currentIndex}.jpg`;
-    }, 3000);
+    document.addEventListener("DOMContentLoaded", function () {
+      let currentIndex = 1;
+      const totalImages = 16;
+      const carouselImage = document.getElementById("carousel-image");
+
+      function rotateImage() {
+        currentIndex = (currentIndex % totalImages) + 1;
+        const newSrc = `images/${currentIndex}.jpg`;
+        console.log("Switching to:", newSrc);
+        carouselImage.src = newSrc;
+      }
+
+      if (carouselImage) {
+        setInterval(rotateImage, 3000);
+      }
+    });
   </script>
 
   <section class="features">
