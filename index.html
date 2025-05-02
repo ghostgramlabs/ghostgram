@@ -8,7 +8,7 @@
   <meta name="author" content="Ghostgram Team">
   <meta property="og:title" content="Ghostgram - Private Instagram Followers Tracker">
   <meta property="og:description" content="Track your Instagram unfollowers, mutuals, and fans privately and offline. No login needed.">
-  <meta property="og:image" content="https://yourcustomdomain.com/assets/ghostgram-preview.png">
+  <meta property="og:image" content="images/app_icon.png">
   <meta property="og:url" content="https://play.google.com/store/apps/details?id=com.ghostgram.app">
   <meta name="twitter:card" content="summary_large_image">
   <title>Ghostgram - Offline Instagram Followers Tracker</title>
@@ -22,6 +22,10 @@
       text-align: center;
       padding: 40px 20px;
     }
+    header img {
+      height: 80px;
+      margin-bottom: 20px;
+    }
     header h1 {
       font-size: 2.5rem;
       margin-bottom: 10px;
@@ -34,24 +38,14 @@
     .cta-buttons {
       margin-top: 30px;
     }
-    .cta-buttons a {
-      display: inline-block;
-      padding: 12px 24px;
-      margin: 10px;
-      background-color: white;
-      color: #4a00e0;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: 0.3s;
+    .carousel {
+      max-width: 320px;
+      margin: 40px auto;
     }
-    .cta-buttons a:hover {
-      background-color: #f0f0f0;
-    }
-    footer {
-      margin-top: 60px;
-      font-size: 0.9rem;
-      color: #ddd;
+    .carousel img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     }
     .features {
       margin-top: 60px;
@@ -67,25 +61,43 @@
       margin: auto;
     }
     .features li {
-      background: rgba(255,255,255,0.1);
+      background: rgba(255, 255, 255, 0.1);
       margin: 10px 0;
       padding: 15px;
       border-radius: 8px;
     }
-    a:link, a:visited {
-      color: white;
+    footer {
+      margin-top: 60px;
+      font-size: 0.9rem;
+      color: #ddd;
     }
   </style>
 </head>
 <body>
   <header>
+    <img src="images/app_icon.png" alt="Ghostgram Icon">
     <h1>Ghostgram</h1>
     <p>Track who’s not following you back on Instagram — 100% offline and private. No login. No risk.</p>
     <div class="cta-buttons">
-      <a href="https://play.google.com/store/apps/details?id=com.ghostgram.app" target="_blank">Download on Google Play</a>
-      <a href="#how">How It Works</a>
+      <a href="https://play.google.com/store/apps/details?id=com.ghostgram.app" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" 
+             alt="Get it on Google Play" style="height:60px; margin-top: 20px;">
+      </a>
     </div>
   </header>
+
+  <div class="carousel">
+    <img id="carousel-image" src="images/1.jpg" alt="App Screenshot">
+  </div>
+
+  <script>
+    let currentIndex = 1;
+    const totalImages = 15;
+    setInterval(() => {
+      currentIndex = (currentIndex % totalImages) + 1;
+      document.getElementById("carousel-image").src = `images/${currentIndex}.jpg`;
+    }, 3000);
+  </script>
 
   <section class="features">
     <h2>Key Features</h2>
@@ -99,7 +111,7 @@
     </ul>
   </section>
 
-  <section id="how" class="features">
+  <section class="features">
     <h2>How It Works</h2>
     <ul>
       <li>Request your Instagram data export (followers & following only)</li>
@@ -111,7 +123,7 @@
 
   <footer>
     <p>&copy; 2025 Ghostgram. Not affiliated with Instagram or Meta Platforms, Inc.</p>
-    <p><a href="privacy.html" style="text-decoration:underline;">Privacy Policy</a></p>
+    <p><a href="privacy.html" style="text-decoration:underline; color:white;">Privacy Policy</a></p>
   </footer>
 </body>
 </html>
