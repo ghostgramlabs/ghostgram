@@ -48,7 +48,7 @@
       height: 60px;
     }
     .carousel {
-      max-width: 700px;
+      max-width: 1000px;
       margin: 50px auto;
       overflow: hidden;
       position: relative;
@@ -56,11 +56,12 @@
     .carousel-track {
       display: flex;
       transition: transform 0.6s ease-in-out;
-      width: 100%;
+      width: 1600%;
     }
     .carousel-track img {
-      width: 100%;
+      width: 250px;
       height: auto;
+      margin-right: 10px;
       flex-shrink: 0;
       border-radius: 12px;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
@@ -110,89 +111,88 @@
       header h1 { font-size: 2rem; }
       header p { font-size: 1rem; }
       .features h2 { font-size: 1.5rem; }
+      .carousel-track img {
+        width: 200px;
+      }
     }
   </style>
 </head>
 <body>
-  <header>
-    <img class="logo" src="images/app_icon.png" alt="Ghostgram Icon" onerror="this.style.display='none'">
-    <h1>Ghostgram</h1>
-    <p>Track who’s not following you back on Instagram — 100% offline and private. No login. No risk.</p>
-    <div class="cta-buttons">
-      <a href="https://play.google.com/store/apps/details?id=com.ghostgram.app" target="_blank">
-        <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" 
-             alt="Get it on Google Play">
-      </a>
-    </div>
-  </header>
-
-  <div class="carousel">
-    <button class="carousel-button left" onclick="moveSlide(-1)">&#10094;</button>
-    <div class="carousel-track" id="carousel-track">
-      <img src="images/1.jpg" alt="Screenshot 1">
-      <img src="images/2.jpg" alt="Screenshot 2">
-      <img src="images/3.jpg" alt="Screenshot 3">
-      <img src="images/4.jpg" alt="Screenshot 4">
-      <img src="images/5.jpg" alt="Screenshot 5">
-      <img src="images/6.jpg" alt="Screenshot 6">
-      <img src="images/7.jpg" alt="Screenshot 7">
-      <img src="images/8.jpg" alt="Screenshot 8">
-      <img src="images/9.jpg" alt="Screenshot 9">
-      <img src="images/10.jpg" alt="Screenshot 10">
-      <img src="images/11.jpg" alt="Screenshot 11">
-      <img src="images/12.jpg" alt="Screenshot 12">
-      <img src="images/13.jpg" alt="Screenshot 13">
-      <img src="images/14.jpg" alt="Screenshot 14">
-      <img src="images/15.jpg" alt="Screenshot 15">
-      <img src="images/16.jpg" alt="Screenshot 16">
-    </div>
-    <button class="carousel-button right" onclick="moveSlide(1)">&#10095;</button>
+<header>
+  <img class="logo" src="images/app_icon.png" alt="Ghostgram Icon" onerror="this.style.display='none'">
+  <h1>Ghostgram</h1>
+  <p>Track who’s not following you back on Instagram — 100% offline and private. No login. No risk.</p>
+  <div class="cta-buttons">
+    <a href="https://play.google.com/store/apps/details?id=com.ghostgram.app" target="_blank">
+      <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" 
+           alt="Get it on Google Play">
+    </a>
   </div>
+</header>
+<div class="carousel">
+  <button class="carousel-button left" onclick="moveSlide(-1)">&#10094;</button>
+  <div class="carousel-track" id="carousel-track">
+    <img src="images/1.jpg" alt="Screenshot 1">
+    <img src="images/2.jpg" alt="Screenshot 2">
+    <img src="images/3.jpg" alt="Screenshot 3">
+    <img src="images/4.jpg" alt="Screenshot 4">
+    <img src="images/5.jpg" alt="Screenshot 5">
+    <img src="images/6.jpg" alt="Screenshot 6">
+    <img src="images/7.jpg" alt="Screenshot 7">
+    <img src="images/8.jpg" alt="Screenshot 8">
+    <img src="images/9.jpg" alt="Screenshot 9">
+    <img src="images/10.jpg" alt="Screenshot 10">
+    <img src="images/11.jpg" alt="Screenshot 11">
+    <img src="images/12.jpg" alt="Screenshot 12">
+    <img src="images/13.jpg" alt="Screenshot 13">
+    <img src="images/14.jpg" alt="Screenshot 14">
+    <img src="images/15.jpg" alt="Screenshot 15">
+    <img src="images/16.jpg" alt="Screenshot 16">
+  </div>
+  <button class="carousel-button right" onclick="moveSlide(1)">&#10095;</button>
+</div>
+<script>
+  let currentIndex = 0;
+  const totalImages = 16;
+  const track = document.getElementById("carousel-track");
+  const slideWidth = 260; // 250px image + 10px margin
 
-  <script>
-    let currentIndex = 0;
-    const totalImages = 16;
-    const track = document.getElementById("carousel-track");
+  function updateSlide() {
+    track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+  }
 
-    function updateSlide() {
-      track.style.transform = `translateX(-${currentIndex * 100}%)`;
-    }
+  function moveSlide(step) {
+    currentIndex = (currentIndex + step + totalImages) % totalImages;
+    updateSlide();
+  }
 
-    function moveSlide(step) {
-      currentIndex = (currentIndex + step + totalImages) % totalImages;
-      updateSlide();
-    }
-
-    setInterval(() => {
-      moveSlide(1);
-    }, 3000);
-  </script>
-
-  <section class="features">
-    <h2>Key Features</h2>
-    <ul>
-      <li>See who’s not following you back</li>
-      <li>Find mutual followers and fans</li>
-      <li>Compare snapshots to detect unfollowers over time</li>
-      <li>Track visited profiles and starred users</li>
-      <li>Export all data to CSV files</li>
-      <li>Completely offline — your data never leaves your phone</li>
-    </ul>
-  </section>
-
-  <section class="features">
-    <h2>How It Works</h2>
-    <ul>
-      <li>Request your Instagram data export (followers & following only)</li>
-      <li>Download the ZIP file and open Ghostgram</li>
-      <li>Upload the ZIP — no login required</li>
-      <li>View stats, compare snapshots, export your data</li>
-    </ul>
-  </section>
-
-  <footer>
-    <p>&copy; 2025 Ghostgram. Not affiliated with Instagram or Meta Platforms, Inc.</p>
-    <p><a href="privacy.html" style="text-decoration:underline; color:white;">Privacy Policy</a></p>
-  </footer>
+  setInterval(() => {
+    moveSlide(1);
+  }, 3000);
+</script>
+<section class="features">
+  <h2>Key Features</h2>
+  <ul>
+    <li>See who’s not following you back</li>
+    <li>Find mutual followers and fans</li>
+    <li>Compare snapshots to detect unfollowers over time</li>
+    <li>Track visited profiles and starred users</li>
+    <li>Export all data to CSV files</li>
+    <li>Completely offline — your data never leaves your phone</li>
+  </ul>
+</section>
+<section class="features">
+  <h2>How It Works</h2>
+  <ul>
+    <li>Request your Instagram data export (followers & following only)</li>
+    <li>Download the ZIP file and open Ghostgram</li>
+    <li>Upload the ZIP — no login required</li>
+    <li>View stats, compare snapshots, export your data</li>
+  </ul>
+</section>
+<footer>
+  <p>&copy; 2025 Ghostgram. Not affiliated with Instagram or Meta Platforms, Inc.</p>
+  <p><a href="privacy.html" style="text-decoration:underline; color:white;">Privacy Policy</a></p>
+</footer>
 </body>
 </html>
